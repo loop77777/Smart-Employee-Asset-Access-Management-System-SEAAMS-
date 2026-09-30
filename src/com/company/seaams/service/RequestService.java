@@ -4,38 +4,30 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class RequestService {
-    private final Queue<ServiceRequest> executionQueue = new LinkedList<>();
+    private final Queue<ServiceRequest> executionQueue = new LinkedList<ServiceRequest>();
 
     public void raiseRequest(ServiceRequest request) {
-        if (request == null) {
-            System.out.println("[ERROR] Request payload is empty.");
-            return;
-        }
-
         executionQueue.offer(request);
-        System.out.println("[SUCCESS] Service request ticket queued: " + request.getRequestId()
-                + " for employee " + request.getEmployeeId());
+        System.out.println("[QUEUED] Request added to process pipeline: " + request);
     }
 
     public void processNextRequest() {
-        ServiceRequest request = executionQueue.poll();
-        if (request == null) {
-            System.out.println("[INFO] No pending service requests in queue.");
+        ServiceRequest pendingReq = executionQueue.poll();
+        if (pendingReq == null) {
+            System.out.println("[IDLE] Queue pipeline currently empty. No pending requests.");
             return;
         }
-
-        request.setStatus("CLOSED");
-        System.out.println("[PROCESSED] " + request);
+        pendingReq.setStatus("CLOSED");
+        System.out.println("[PROCESSED] Successfully updated state to CLOSED for: " + pendingReq);
     }
 
     public void listPendingRequests() {
         if (executionQueue.isEmpty()) {
-            System.out.println("No pending service requests.");
+            System.out.println("No active requests pending in the execution pipeline.");
             return;
         }
-
-        for (ServiceRequest request : executionQueue) {
-            System.out.println(request);
+        for (ServiceRequest req : executionQueue) {
+            System.out.println(req);
         }
     }
 }
