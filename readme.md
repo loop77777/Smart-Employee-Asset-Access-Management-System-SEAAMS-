@@ -98,20 +98,20 @@ src/
 └── com/
     └── company/
         └── seaams/
-            ├── main/
+            ├── main/                //  <-- Application entry point and UI controller
             │   └── MainApp.java
-            ├── model/
+            ├── model/               // <-- Plain Old Java Objects (Models / Domain classes)
             │   ├── Person.java
             │   ├── Employee.java
             │   ├── Asset.java
             │   ├── Laptop.java
             │   └── Mobile.java
-            ├── service/
+            ├── service/            // <-- Business logic and data management 
             │   ├── EmployeeService.java
             │   ├── AssetService.java
             │   ├── ServiceRequest.java
             │   └── RequestService.java
-            └── util/
+            └── util/             //  <-- Helper utilities and validation methods
                 └── ValidationUtil.java
 ```
 
