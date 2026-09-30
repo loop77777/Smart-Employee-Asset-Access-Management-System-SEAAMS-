@@ -96,7 +96,7 @@ src/
 └── company/
 └── seaams/
 ├── entity/         <-- Plain Old Java Objects (Models / Domain classes)
-├── service/        <-- Business logic and data management engines
+├── service/        <-- Business logic and data management com.company.seaams.service.engines
 ├── util/           <-- Helper utilities and validation methods
 └── main/           <-- Application entry point and UI controller
 
